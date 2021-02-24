@@ -80,6 +80,8 @@ for category_name, category_href in all_catigories.items():
 
     #проверка таблицы на наличие таблицы с продуктами
     alert_block = soup.find(class_='uk-alert-danger')
+    if alert_block is not None:
+        continue
 
     # собираем заголовки таблицы
     table_head = soup.find(class_='mzr-tc-group-table').find('tr').find_all('th')
@@ -105,7 +107,7 @@ for category_name, category_href in all_catigories.items():
 
 
     #собираем данные продуктов
-    products_data = soup.find(class_='uk-overflow-container').find('tbody').find_all('tr')
+    products_data = soup.find(class_='mzr-tc-group-table').find('tbody').find_all('tr')
 
     product_info = []
     for item in products_data:
